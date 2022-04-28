@@ -1,7 +1,9 @@
-const { v4 } = require("uuid");
-const { AWS } = require("aws-sdk");
+"use strict";
 
-const createTask = async (event) => {
+const { v4 } = require("uuid");
+const AWS = require("aws-sdk");
+
+module.exports.createTask = async (event) => {
   const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
   const { title, description } = JSON.parse(event.body);
@@ -10,8 +12,8 @@ const createTask = async (event) => {
 
   const newTask = {
     id,
-    title,
     description,
+    title,
     createdAt,
   };
 
@@ -26,8 +28,4 @@ const createTask = async (event) => {
     statusCode: 200,
     body: JSON.stringify(newTask),
   };
-};
-
-module.exports = {
-  createTask,
 };
