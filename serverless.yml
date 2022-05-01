@@ -42,8 +42,7 @@ functions:
     events: 
       - httpApi:
           path: /tasks/{id}
-          method: delete1
-
+          method: delete
 
 resources:
   Resources: 

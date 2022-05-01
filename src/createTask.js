@@ -7,7 +7,7 @@ module.exports.createTask = async (event) => {
   const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
   const { title, description } = JSON.parse(event.body);
-  const createdAt = new Date();
+  const createdAt = new Date().getTime();
   const id = v4();
 
   const newTask = {
